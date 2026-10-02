@@ -141,14 +141,14 @@ export const method = [
 ];
 
 export const leaders = [
-  { name: "Sharda Ratnam", role: "Co-Founder", bio: [
-    "Marketing & Media professional with over 15 years experience in Advertising, Broadcast & TV, Retail & Branded Entertainment.",
-    "Founded TGA as a holistic Branded Content company creating IPR, original content & integrated solutions to corporate brands & entertainment partners.",
-  ] },
-  { name: "Dhiraj Jadhav", role: "Leadership", bio: [
+  { name: "Dhiraj Jadhav", role: "CEO & Founder", bio: [
     "Experienced media, syndication professional with over 10 years experience.",
     "Handled media buying for major news channels.",
     "Founded media, teleshopping & syndication business.",
     "Multiple client portfolio.",
+  ] },
+  { name: "Sharda Ratnam", role: "Co-Founder", bio: [
+    "Marketing & Media professional with over 15 years experience in Advertising, Broadcast & TV, Retail & Branded Entertainment.",
+    "Founded TGA as a holistic Branded Content company creating IPR, original content & integrated solutions to corporate brands & entertainment partners.",
   ] },
 ];

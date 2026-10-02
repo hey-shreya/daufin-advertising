@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 97%;
+    --foreground: 278 20% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 278 20% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 278 20% 10%;
+    --hero-photo-opacity: .55;
+    --primary: 278 53% 34%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 278 30% 94%;
+    --secondary-foreground: 278 44% 20%;
+    --muted: 278 20% 91%;
+    --muted-foreground: 278 12% 42%;
+    --accent: 292 52% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 42 25% 96%;
+    --border: 278 18% 80%;
+    --input: 278 18% 80%;
+    --ring: 278 53% 34%;
+    --radius: 0.25rem;
+    --hero-overlay: linear-gradient(180deg, hsl(270 15% 7% / .08) 0%, hsl(270 15% 7% / .2) 40%, hsl(270 15% 7% / .88) 100%);
+    --case-overlay: linear-gradient(180deg, hsl(270 15% 7% / .2) 0%, hsl(270 15% 7% / .9) 100%);
+  }
+  .dark {
+    --background: 275 30% 5%;
+    --foreground: 278 28% 96%;
+    --card: 278 32% 9%;
+    --hero-photo-opacity: 1;
+    --card-foreground: 278 28% 96%;
+    --popover: 278 32% 12%;
+    --popover-foreground: 278 28% 96%;
+    --primary: 285 62% 65%;
+    --primary-foreground: 278 36% 9%;
+    --secondary: 278 27% 18%;
+    --secondary-foreground: 278 28% 96%;
+    --muted: 278 24% 18%;
+    --muted-foreground: 278 14% 71%;
+    --accent: 294 66% 69%;
+    --accent-foreground: 278 36% 9%;
+    --border: 278 20% 29%;
+    --input: 278 20% 29%;
+    --ring: 285 62% 65%;
+  }
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-background font-sans text-foreground antialiased; }
+  h1,h2,h3,h4,p { text-wrap: pretty; }
+  ::selection { @apply bg-primary text-primary-foreground; }
+}
+
+@layer utilities {
+  .font-display { font-family: "Cormorant Garamond", Georgia, serif; letter-spacing: 0; }
+  .bg-hero-overlay { background: var(--hero-overlay); }
+  .bg-case-overlay { background: var(--case-overlay); }
+  .bg-campaign-cover { background: radial-gradient(circle at 80% 15%, hsl(285 55% 38%) 0%, hsl(278 50% 18%) 45%, hsl(270 20% 6%) 100%); }
+  .timeline-scroll { scrollbar-width: thin; scrollbar-color: hsl(var(--primary)) hsl(var(--secondary)); }
+  .bg-hero-wash { background: radial-gradient(ellipse at 75% 30%, hsl(var(--primary) / .18), transparent 60%), hsl(var(--background)); }
+  .bg-hero-fade { background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background) / .85) 35%, hsl(var(--background) / 0) 70%); }
+  .bg-deep-fade { background: linear-gradient(90deg, hsl(var(--card)) 30%, hsl(var(--card) / .4) 65%, hsl(var(--card) / 0) 100%); }
+  .hero-photo { opacity: var(--hero-photo-opacity); }
+  .route-fade { animation: route-fade .45s ease-out both; }
+  @keyframes route-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

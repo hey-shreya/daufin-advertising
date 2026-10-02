@@ -64,7 +64,7 @@
   .bg-hero-wash { background: radial-gradient(ellipse at 75% 30%, hsl(var(--primary) / .18), transparent 60%), hsl(var(--background)); }
   .bg-hero-fade { background: linear-gradient(90deg, hsl(var(--background)) 0%, hsl(var(--background) / .85) 35%, hsl(var(--background) / 0) 70%); }
   .bg-deep-fade { background: linear-gradient(90deg, hsl(var(--card)) 30%, hsl(var(--card) / .4) 65%, hsl(var(--card) / 0) 100%); }
-  .hero-photo { opacity: var(--hero-photo-opacity); }
+  .hero-photo { opacity: var(--hero-photo-opacity); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 35%, #000 100%), linear-gradient(0deg, transparent 0%, #000 12%); mask-image: linear-gradient(90deg, transparent 0%, #000 35%, #000 100%); }
   .route-fade { animation: route-fade .45s ease-out both; }
   @keyframes route-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 }

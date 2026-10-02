@@ -1,5 +1,5 @@
 export type WorkCategory = "Digital" | "Film & TV" | "Brand Integration" | "PR & Media";
-export const workFilters = ["All", "Digital", "Film & TV", "Brand Integration", "PR & Media"] as const;
+export const workFilters = ["All", "Digital", "Film & TV", "Brand Integration"] as const;
 
 export type Campaign = {
   slug: string;
@@ -120,9 +120,10 @@ export const campaigns: Campaign[] = [
 
 export const campaignName = (c: Campaign) => `${c.client} × ${c.property}`;
 
-// WhatsApp business number in international digits-only format (e.g. 9198xxxxxxxxx).
-// TODO: replace with the real Daufin business number when provided.
-export const WHATSAPP_NUMBER = "919876543210";
+export const WHATSAPP_NUMBER = "919930706359";
+export const WHATSAPP_DISPLAY = "+91 9930706359";
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+export const CONTACT_EMAIL = "Daufinadvertising@gmail.com";
 
 export const services = [
   { number: "01", title: "Branded Entertainment", text: "Connecting brands with entertainment properties across film, television, OTT, digital, music and experiential.", detail: ["Film", "Television", "OTT", "Digital", "Music", "Branded content"] },

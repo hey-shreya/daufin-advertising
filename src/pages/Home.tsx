@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ArrowLeft, ChevronDown, Megaphone, Gem, MonitorSmartphone, BarChart3, Lightbulb, LineChart, Target, Layers, Quote, FolderKanban, Users, TrendingUp } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ArrowLeft, ChevronDown, Megaphone, Gem, MonitorSmartphone, BarChart3, Lightbulb, LineChart, Target, Layers, Quote, } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CampaignVisual, usePageMeta } from "@/components/site/Editorial";
@@ -27,16 +26,14 @@ const approach = [
   ["Execution", "Bring ideas to life across media, content and experiences."],
   ["Growth", "Create lasting impact and measurable results."],
 ];
-const stats = [[FolderKanban, "120+", "Projects Completed"], [Users, "35+", "Brands Collaborated"], [TrendingUp, "2.5X", "Average Brand Growth"]] as const;
+const experience = ["Advertising.", "Entertainment.", "Digital.", "Content."];
 const deep = [
   ["Advertising", "Campaigns that create conversations.", heroImg],
   ["Branding", "Identities that stand out and stay relevant.", ribbonImg],
   ["Digital", "Experiences that connect across platforms.", cinemaImg],
 ] as const;
 const pillars = [[Lightbulb, "Creative Thinking"], [LineChart, "Data Insights"], [Target, "Strategic Approach"], [Layers, "Seamless Execution"]] as const;
-const stories = [
-  { quote: "Daufin understood our brand like no other. Their creative approach and execution brought our campaign to life in the most impactful way.", who: "Marketing Team", brand: "BRU" },
-];
+const stories = [{ quote: "Brands become more meaningful when they become part of culture." }];
 const faqs = [
   ["What does Daufin do?", "Daufin connects brands with culture through advertising, branded entertainment, brand integration, content, digital and experiential campaigns."],
   ["How does the process work?", "We move from strategy to creative to execution to growth — understanding the brand and audience first, then building and delivering the idea across the right media."],
@@ -53,7 +50,7 @@ const circle = "inline-flex h-9 w-9 items-center justify-center rounded-full bor
 
 export default function Home() {
   usePageMeta("Daufin Advertising | Where Brands Meet Culture", "Daufin Advertising builds brands that get noticed through advertising, branded entertainment, digital and strategy.");
-  const [story, setStory] = useState(0);
+  const story = 0;
   const s = stories[story];
   const scrollNext = () => document.getElementById("trusted")?.scrollIntoView({ behavior: "smooth" });
 
@@ -137,14 +134,12 @@ export default function Home() {
       </div>
     </div></section>
 
-    {/* Numbers */}
+    {/* The experience */}
     <section className="border-t border-border py-16"><div className={wrap}>
-      <Label n="05">The numbers</Label>
-      <div className="grid divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
-        {stats.map(([Icon, n, l]) => <div key={l} className="flex items-center gap-5 py-6 md:px-8 first:md:pl-0">
-          <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border text-primary"><Icon className="h-5 w-5" strokeWidth={1.4} /></span>
-          <div><p className="font-display text-5xl">{n}</p><p className="text-xs text-muted-foreground">{l}</p></div>
-        </div>)}
+      <Label n="05">The experience</Label>
+      <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
+        <p className="font-display text-5xl leading-[1.02] md:text-6xl">{experience.map((w, i) => <span key={w} className={i % 2 ? "block italic text-primary" : "block"}>{w}</span>)}</p>
+        <p className="max-w-md text-muted-foreground">We create connections between brands, entertainment and audiences through integrated creative solutions.</p>
       </div>
     </div></section>
 
@@ -174,13 +169,11 @@ export default function Home() {
 
     {/* Client stories */}
     <section className="border-t border-border py-20"><div className={wrap}>
-      <div className="mb-8 flex items-center justify-between"><span className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Client stories</span>
-        <div className="flex gap-2"><button aria-label="Previous story" onClick={() => setStory((story - 1 + stories.length) % stories.length)} className="group"><span className={circle}><ArrowLeft className="h-4 w-4" /></span></button><button aria-label="Next story" onClick={() => setStory((story + 1) % stories.length)} className="group"><span className={circle}><ArrowRight className="h-4 w-4" /></span></button></div>
+      <div className="mb-8 flex items-center justify-between"><span className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">Our belief</span>
       </div>
       <figure key={story} className="animate-fade-in rounded-md border border-border bg-card p-8 md:p-12">
         <Quote className="h-12 w-12 fill-primary text-primary" strokeWidth={0} />
         <blockquote className="mt-4 max-w-3xl font-display text-2xl leading-snug md:text-3xl">{s.quote}</blockquote>
-        <figcaption className="mt-6 flex items-center gap-3 text-xs"><span><span className="block font-semibold">{s.who}</span><span className="text-muted-foreground">{s.brand}</span></span><span className="flex h-9 w-9 items-center justify-center rounded-full bg-foreground/80 text-[10px] font-extrabold text-background">{s.brand}</span></figcaption>
       </figure>
     </div></section>
 

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Eyebrow, PageIntro, TextLink } from "@/components/site/Editorial";
-import { leaders, method, services, WHATSAPP_NUMBER } from "@/data/site";
+import { CONTACT_EMAIL, leaders, method, services, WHATSAPP_DISPLAY, WHATSAPP_NUMBER, WHATSAPP_URL } from "@/data/site";
 import cinemaImage from "@/assets/campaign-cinema.jpg";
 
 export function About() { return <><PageIntro eyebrow="Who we are" title="Built between brand ambition and audience instinct." copy="Daufin is a Mumbai-based creative agency working where entertainment, culture and commerce converge."/><section className="px-5 pb-24 md:px-10 md:pb-32"><div className="mx-auto max-w-[1500px]"><img src={cinemaImage} alt="A creative ensemble on set" width={1600} height={1200} className="aspect-[16/8] w-full object-cover"/><div className="grid gap-10 border-b border-border py-16 md:grid-cols-2"><h2 className="font-display text-5xl md:text-7xl">We know the story and the spreadsheet.</h2><div className="space-y-6 text-lg leading-relaxed text-muted-foreground"><p>Our work combines entertainment relationships, creative thinking and commercial clarity. That means ideas can feel culturally alive and remain accountable to the business behind them.</p><p>From film integrations to digital communities, we build collaborations around a simple belief: the audience should get something worth caring about.</p></div></div>
@@ -28,7 +28,7 @@ export function Contact() {
       "",
       `Brief: ${data.get("brief")}`
     ].filter(Boolean).join("\n");
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message.slice(0, 3000))}`, "_blank", "noopener,noreferrer");
     setSent(true);
   };
   return (
@@ -38,8 +38,9 @@ export function Contact() {
         <div className="mx-auto grid max-w-[1500px] gap-16 lg:grid-cols-[1fr_1.4fr]">
           <div className="space-y-8">
             <div><MapPin className="mb-3 h-5 w-5 text-primary"/><p className="font-display text-2xl">Mumbai, Maharashtra</p></div>
-            <div><Mail className="mb-3 h-5 w-5 text-primary"/><a href="mailto:info@daufinadvertising.com" className="font-display text-2xl">info@daufinadvertising.com</a></div>
-            <Button asChild variant="outline"><a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer"><MessageCircle/>WhatsApp</a></Button>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">Prefer a direct conversation?</p>
+            <div><MessageCircle className="mb-3 h-5 w-5 text-primary"/><p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">WhatsApp</p><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="font-display text-2xl hover:text-primary">{WHATSAPP_DISPLAY}</a></div>
+            <div><Mail className="mb-3 h-5 w-5 text-primary"/><p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Email</p><a href={`mailto:${CONTACT_EMAIL}`} className="break-all font-display text-2xl hover:text-primary">{CONTACT_EMAIL}</a></div>
           </div>
           {sent ? (
             <div className="flex min-h-80 flex-col items-center justify-center border border-border text-center">
@@ -50,13 +51,13 @@ export function Contact() {
           ) : (
             <form onSubmit={openWhatsApp} className="grid gap-6">
               <div className="grid gap-6 md:grid-cols-2">
-                <Input aria-label="Name" name="name" placeholder="Your name" required/>
-                <Input aria-label="Email" name="email" type="email" placeholder="Email address" required/>
+                <Input aria-label="Name" name="name" maxLength={100} placeholder="Your name" required/>
+                <Input aria-label="Email" name="email" maxLength={255} type="email" placeholder="Email address" required/>
               </div>
-              <Input aria-label="Company" name="company" placeholder="Company / brand"/>
-              <Input aria-label="Project type" name="project" placeholder="What are we making?"/>
-              <Textarea aria-label="Brief" name="brief" placeholder="Tell us about the ambition" rows={6} required/>
-              <Button type="submit" size="lg" className="w-fit">Send via WhatsApp <ArrowRight/></Button>
+              <Input aria-label="Company" name="company" maxLength={120} placeholder="Company / brand"/>
+              <Input aria-label="Project type" name="project" maxLength={120} placeholder="What are we making?"/>
+              <Textarea aria-label="Brief" name="brief" maxLength={2000} placeholder="Tell us about the ambition" rows={6} required/>
+              <div className="flex flex-wrap items-center gap-4"><Button type="submit" size="lg" className="w-fit uppercase tracking-[0.12em]">Send enquiry <ArrowRight/></Button><p className="text-sm text-muted-foreground">Opens WhatsApp with your brief. Or email <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary underline-offset-4 hover:underline">{CONTACT_EMAIL}</a></p></div>
             </form>
           )}
         </div>

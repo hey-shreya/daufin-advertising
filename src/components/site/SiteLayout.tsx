@@ -53,14 +53,16 @@ export function SiteLayout() {
       </header>
       <main className="pt-24"><div key={location.pathname} className="route-fade"><Outlet /></div></main>
       <footer className="border-t border-border bg-background text-foreground">
-        <div className="mx-auto max-w-[1500px] px-5 py-14 md:px-10">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <Link to="/" className="flex h-20 items-center" aria-label="Daufin home"><img src="/daufin-logo.png" alt="Daufin Advertising" width={320} height={248} className="h-full w-auto object-contain dark:brightness-[1.9] dark:saturate-[1.1]" /></Link>
-            <nav className="flex flex-wrap gap-6" aria-label="Footer navigation">{links.map(([l, h]) => <Link key={h} to={h} className="text-xs uppercase tracking-[0.12em] text-muted-foreground hover:text-primary">{l}</Link>)}</nav>
-            <div className="flex flex-col gap-2 text-sm"><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-primary">{CONTACT_EMAIL}</a><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp {WHATSAPP_DISPLAY}</a></div>
+        <div className="mx-auto max-w-[1500px] px-5 py-16 md:px-10 md:py-20">
+          <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+            <div className="flex flex-col gap-5">
+              <Link to="/" className="flex h-20 items-center" aria-label="Daufin home"><img src="/daufin-logo.png" alt="Daufin Advertising" width={320} height={248} className="h-full w-auto object-contain dark:brightness-[1.9] dark:saturate-[1.1]" /></Link>
+              <p className="font-display text-2xl text-foreground md:text-3xl">Where brands meet culture.</p>
+            </div>
+            <div className="flex flex-col gap-3 text-sm md:items-end md:text-right"><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-primary">{CONTACT_EMAIL}</a><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp {WHATSAPP_DISPLAY}</a></div>
           </div>
-          <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:justify-between">
-            <span>© 2026 Daufin Advertising. Where brands meet culture.</span><span>DAUFIN Advertising · Mumbai</span>
+          <div className="mt-14 flex flex-col gap-3 border-t border-border pt-6 text-xs uppercase tracking-[0.12em] text-muted-foreground md:flex-row md:justify-between">
+            <span>© 2026 Daufin Advertising</span><span>DAUFIN Advertising · Mumbai</span>
           </div>
         </div>
       </footer>

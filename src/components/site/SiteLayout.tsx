@@ -30,7 +30,7 @@ export function SiteLayout() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-md">
         <div className="mx-auto flex h-24 max-w-[1500px] items-center justify-between px-5 md:px-10">
           <Link to="/" className="flex h-[4.5rem] items-center py-1.5" aria-label="Daufin home">
-            <img src="/daufin-logo.png" alt="Daufin Advertising" width={320} height={248} className="h-full w-auto object-contain dark:brightness-125 dark:drop-shadow-[0_0_10px_hsl(var(--primary)/0.35)]" />
+            <img src="/daufin-logo.png" alt="Daufin Advertising" width={320} height={248} className="h-full w-auto object-contain dark:brightness-[1.9] dark:saturate-[1.1]" />
           </Link>
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
             {links.map(([label, href]) => (
@@ -55,7 +55,7 @@ export function SiteLayout() {
       <footer className="border-t border-border bg-background text-foreground">
         <div className="mx-auto max-w-[1500px] px-5 py-14 md:px-10">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <Link to="/" className="flex h-20 items-center" aria-label="Daufin home"><img src="/daufin-logo.png" alt="Daufin Advertising" width={320} height={248} className="h-full w-auto object-contain dark:brightness-125 dark:drop-shadow-[0_0_10px_hsl(var(--primary)/0.35)]" /></Link>
+            <Link to="/" className="flex h-20 items-center" aria-label="Daufin home"><img src="/daufin-logo.png" alt="Daufin Advertising" width={320} height={248} className="h-full w-auto object-contain dark:brightness-[1.9] dark:saturate-[1.1]" /></Link>
             <nav className="flex flex-wrap gap-6" aria-label="Footer navigation">{links.map(([l, h]) => <Link key={h} to={h} className="text-xs uppercase tracking-[0.12em] text-muted-foreground hover:text-primary">{l}</Link>)}</nav>
             <div className="flex flex-col gap-2 text-sm"><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-primary">{CONTACT_EMAIL}</a><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp {WHATSAPP_DISPLAY}</a></div>
           </div>

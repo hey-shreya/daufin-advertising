@@ -23,10 +23,22 @@ export function PageIntro({ eyebrow, title, copy }: { eyebrow: string; title: Re
 
 /** Shows real campaign artwork when supplied, otherwise an editorial typographic cover. */
 export function CampaignVisual({ campaign, className, eager }: { campaign: Campaign; className?: string; eager?: boolean }) {
-  if (campaign.image) return <img src={campaign.image} alt={`${campaign.client} × ${campaign.property} campaign artwork`} loading={eager ? "eager" : "lazy"} className={cn("h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]", className)} />;
-  return <div className={cn("dark flex h-full w-full flex-col justify-between bg-campaign-cover p-6 text-foreground transition-transform duration-700 group-hover:scale-[1.03] md:p-10", className)} role="img" aria-label={`${campaign.client} × ${campaign.property}`}>
-    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">{campaign.categories[0]}</span>
-    <div><p className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-primary">{campaign.client}</p><p className="mt-2 font-display text-4xl italic leading-none md:text-6xl">{campaign.property}</p></div>
+  const isDaufinLogo = !campaign.image || campaign.image === "/daufin-logo.png";
+  if (campaign.image && !isDaufinLogo) {
+    return <img src={campaign.image} alt={`${campaign.client} × ${campaign.property} campaign artwork`} loading={eager ? "eager" : "lazy"} className={cn("h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]", className)} />;
+  }
+  return <div className={cn("dark relative flex h-full w-full flex-col justify-between bg-campaign-cover p-6 text-foreground transition-transform duration-700 group-hover:scale-[1.03] md:p-10", className)} role="img" aria-label={`${campaign.client} × ${campaign.property}`}>
+    <div className="flex items-center justify-between">
+      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">{campaign.categories[0]}</span>
+      <img src="/daufin-logo.png" alt="Daufin Advertising Logo" className="h-6 w-auto object-contain opacity-70" />
+    </div>
+    <div className="my-auto flex flex-col items-center justify-center py-6 text-center">
+      <img src="/daufin-logo.png" alt="Daufin Logo" className="h-16 w-auto object-contain opacity-90 transition-transform duration-500 group-hover:scale-105" />
+    </div>
+    <div>
+      <p className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-primary">{campaign.client}</p>
+      <p className="mt-2 font-display text-4xl italic leading-none md:text-6xl">{campaign.property}</p>
+    </div>
   </div>;
 }
 
